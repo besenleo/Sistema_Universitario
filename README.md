@@ -1,5 +1,5 @@
-#Universidade Amazonia
-##an university system made in Java
+# Universidade Amazonia
+## an university system made in Java
 
 This is a Java program developed on the third semester of the Computer Science graduation at UNIP Swift. Its main goal is to develop a system which will help on administrating students, grades and courses
 

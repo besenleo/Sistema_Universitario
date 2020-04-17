@@ -4,7 +4,11 @@ package com.mycompany.universidadeamazonia;
 public class Aluno {
     private String id;
     private String nome;
-
+    
+    //Listar todos os alunos inscritos: para cada aluno deve ser impresso seu nome e id, somente
+    //Incluir um novo aluno: deve ser pedido para o usuário informar o id e o nome do aluno.
+    
+    
     public Aluno(String id, String nome){
         if(id.length() == 7){
             this.id = id;

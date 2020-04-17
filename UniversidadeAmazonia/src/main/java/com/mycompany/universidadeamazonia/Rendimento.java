@@ -10,8 +10,18 @@ public class Rendimento {
     boolean aprovado;
     NotaMedia media;
     
+    //REQUERIMENTOS:
+    //Listar o histórico de um determinado aluno:
+        //o seu programa deve ter meios para o usuário escolher o aluno
+        //o histórico de um aluno deve conter todos os cursos que o aluno foi inscrito, e para cada curso o programa deve imprimir o curso, as notas, a média e se foi aprovado.
+    //Listar o relatório de rendimento de cada curso:
+        //o seu programa deve ter meios para o usuário escolher o curso
+        //o relatório de rendimento de um curso deve conter todos os alunos que fizeram o curso, e para cada aluno imprimir o aluno, as notas, a média e se foi aprovado.
+    
+    
     // Talvez o rendimento receba todos os parametros de todas as classes abaixo 
-    // para que seja validado (e talvez instanciado) e lido\
+    // para que seja validado (e talvez instanciado) e lido
+    
     // VAMOS PRECISAR DE:
     // de uma alguma coisa que le os inputs do usuario, vai no CSV e 
     // acha os valores e instancia um objeto para aquele cara. Isso vai ser usado abaixo.

@@ -5,9 +5,14 @@ public class Curso {
     private nivelCurso nivelCurso;
     private int anoCurso;
 
+    //REQUERIMENTOS:
+    //Listar todos os cursos dados: para cada curso deve ser impresso seu nome, nível e ano, somente
+    //Incluir um novo curso: deve ser pedido para o usuário informar o nome, escolher o tipo, e informar o ano.
     
     public Curso(String nome, nivelCurso nivelCurso, int anoCurso) {
         // como atribuir e usar Enum numa classe  rever get e setter
+        
+        // ve se o ano tem 4 caracteres
         if ((int) (Math.log10(anoCurso) + 1) == 4){
             this.nome = nome;
             //this.nivelCurso = nivelCurso; 

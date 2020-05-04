@@ -14,7 +14,7 @@ public class Main {
         
         System.out.println("Input String : "+ inputString);
          
-        System.out.println("Input String Without Spaces : "+stringWithoutSpaces);
+        System.out.println("Input String Without Spaces : " + stringWithoutSpaces);
         
 //        System.out.println("Nota");
 //        String inputString = sc.nextLine();

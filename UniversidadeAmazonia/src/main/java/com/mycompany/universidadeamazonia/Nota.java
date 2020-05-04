@@ -1,20 +1,21 @@
 package com.mycompany.universidadeamazonia;
 
-public abstract class Nota {
-    private double nota;
-
-    public Nota(double nota){
-        if (nota < 0 || nota > 10){
-            this.nota = nota;
-        }else{
-            throw new IllegalArgumentException("Valor da nota não pertence entre 0 a 10: nota = " + this.nota);
-        }
-    }
+public class Nota {
+    private double valor;
     
-    public double getNota() {
-        return nota;
+    public Nota(double valor){
+        this.setValor(valor);
     }
-    public void setNota(double nota){
-        this.nota = nota;
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        if (valor < 0 || valor > 10){
+            this.valor = valor;
+        }else{
+            throw new IllegalArgumentException("Valor da nota não pertence entre 0 a 10. Você tentou atribuir: " + valor);
+        }
     }
 }

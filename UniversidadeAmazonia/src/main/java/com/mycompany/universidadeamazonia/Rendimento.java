@@ -3,174 +3,98 @@ package com.mycompany.universidadeamazonia;
 public class Rendimento {
     Aluno aluno;
     Curso curso;
-    NotaNP1 notaNP1;
-    NotaNP2 notaNP2;
-    NotaRep notaRep;
-    NotaExame notaExame;
+    Notas notas;
+    Notas media;
     boolean aprovado;
-    NotaMedia media;
     
-    //REQUERIMENTOS:
-    //Listar o histórico de um determinado aluno:
-        //o seu programa deve ter meios para o usuário escolher o aluno
-        //o histórico de um aluno deve conter todos os cursos que o aluno foi inscrito, e para cada curso o programa deve imprimir o curso, as notas, a média e se foi aprovado.
-    //Listar o relatório de rendimento de cada curso:
-        //o seu programa deve ter meios para o usuário escolher o curso
-        //o relatório de rendimento de um curso deve conter todos os alunos que fizeram o curso, e para cada aluno imprimir o aluno, as notas, a média e se foi aprovado.
-    
-    
-    // Talvez o rendimento receba todos os parametros de todas as classes abaixo 
-    // para que seja validado (e talvez instanciado) e lido
-    
-    // VAMOS PRECISAR DE:
-    // de uma alguma coisa que le os inputs do usuario, vai no CSV e 
-    // acha os valores e instancia um objeto para aquele cara. Isso vai ser usado abaixo.
-    public Rendimento(Aluno aluno, Curso curso, NotaNP1 notaNP1, 
-                      NotaNP2 notaNP2, NotaRep notaRep, NotaExame notaExame){
-        //funcao que recebe e acha os parametros no csv
-        //Aluno a = new Aluno(parametros_da_funcao_acima);
+    //o parametro aluno vai ser mudado para um id
+    //o parametro curso vai ser mudado para nome, nivel e ano
+    public Rendimento(Aluno aluno, Curso curso, double notaNP1, double notaNP2, double notaRep, double notaExam){
+        //funcao que recebe id e acha os parametros no csv e e retorna um objeto
         this.aluno = aluno;
-        //funcao que recebe e acha os parametros no csv
-        //Curso c = new Curso(parametros_da_funcao_acima);
+        //funcao que recebe nome, nivel e ano e acha os parametros no csv e retorna um objeto
         this.curso = curso;
-        //NotaNP1 np1 = new NotaNP1(notaNP1);
-        //this.notaNP1.setNota(notaNP1);
-        this.notaNP1 = notaNP1;
-        this.notaNP2 = notaNP2;
-        this.notaRep = notaRep;
-        this.notaExame = notaExame;
-        this.media = calcularMedia(notaNP1, notaNP2, notaRep, notaExame, curso); // nao seria melhor que fosse um double?
+        
+        Notas rendimento = new Notas(notaNP1, notaNP2, notaRep, notaExam);
+        this.notas = rendimento;
+        
+        Notas media = new Notas(calcularMedia(notaNP1, notaNP2, notaRep, notaExam, curso));
+        this.media = media;
         
     }
     
-    // tem que ser private ou nao? 
-    public NotaMedia calcularMedia(NotaNP1 notaNP1, NotaNP2 notaNP2, 
-                                   NotaRep notaRep, NotaExame notaExame, 
+    private double calcularMedia(double notaNP1, double notaNP2, 
+                                   double notaRep, double notaExam, 
                                    Curso curso){
         double mediaInicial;
-        double NP1 = notaNP1.getNota();
-        double NP2 = notaNP2.getNota();
-        double rep = notaRep.getNota();
-        double exame = notaExame.getNota();
         
         //Substitui o valor da NP1 ou NP2 caso o valor da Reposição for maior
-        if(NP1 < rep || NP2 < rep){
-            if (NP1 < NP2){
-                NP1 = rep;
+        if(notaNP1 < notaRep || notaNP2 < notaRep){
+            if (notaNP1 < notaNP2){
+                notaNP1 = notaRep;
             }else{
-                NP2 = rep;
+                notaNP2 = notaRep;
             }
         }
         //Calculo media inicial
-        mediaInicial = (NP1 + NP2)/2;      
+        mediaInicial = (notaNP1 + notaNP2)/2;      
         //Se o curso for uma GRADUACAO
-        if (curso.getNivel() == nivelCurso.GRADUACAO){
+        if (curso instanceof CursoGrad){
             //Identificar se a media incial é maior ou igual a 7
             if (mediaInicial >= 7){
                 this.aprovado = true;
-                NotaMedia m = new NotaMedia(mediaInicial);
-                return m;
+                return mediaInicial;
             //Caso nao seja ira precisar do exame, entao calcula-se a media final
             } else {
-                double mediaFinal = (mediaInicial + exame)/2;
-                // Caso maior que 5 aprovado...
+                double mediaFinal = (mediaInicial + notaExam)/2;
+                // Caso maior que 5: aprovado
                 if (mediaFinal > 5){
                     this.aprovado = true;
-                    NotaMedia m = new NotaMedia(mediaFinal);
-                    return m;
+                    return mediaFinal;
                 //senao reprovado.
                 }else{
                     this.aprovado = false;
-                    NotaMedia m = new NotaMedia(mediaFinal);
-                    return m;
+                    return mediaFinal;
                 }
             }
         //Se o curso for uma POS-GRADUACAO
-        }else{
+        }else if(curso instanceof CursoPos){
             //Identificar se a media incial é maior ou igual a 5
             if (mediaInicial >= 5){
                 this.aprovado = true;
-                NotaMedia m = new NotaMedia(mediaInicial);
-                return m;
+                return mediaInicial;
             //Caso nao seja ira precisar do exame, entao calcula-se a media final
             } else {
-                double mediaFinal = (mediaInicial + exame)/2;
+                double mediaFinal = (mediaInicial + notaExam)/2;
                 // Caso maior que 5 aprovado...
                 if (mediaFinal > 5){
                     this.aprovado = true;
-                    NotaMedia m = new NotaMedia(5.0); // Media vai ser 5 idependente do valor da media final
-                    return m;
+                    return mediaFinal;
                 //senao reprovado.
                 }else{
                     this.aprovado = false;
-                    NotaMedia m = new NotaMedia(mediaFinal);
-                    return m;
+                    return mediaFinal;
                 }
             }
+        //Caso nao seja nem gradução nem pos-gradução
+        }else{
+            throw new IllegalArgumentException("Curso não é uma gradução nem uma pós-gradução: " + curso.getClass().getName());
         }
     }
-
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    
+    public Notas getMedia() {
+        return media;
     }
 
     public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    public NotaNP1 getNotaNP1() {
-        return notaNP1;
-    }
-
-    public void setNotaNP1(NotaNP1 notaNP1) {
-        this.notaNP1 = notaNP1;
-    }
-
-    public NotaNP2 getNotaNP2() {
-        return notaNP2;
-    }
-
-    public void setNotaNP2(NotaNP2 notaNP2) {
-        this.notaNP2 = notaNP2;
-    }
-
-    public NotaRep getNotaRep() {
-        return notaRep;
-    }
-
-    public void setNotaRep(NotaRep notaRep) {
-        this.notaRep = notaRep;
-    }
-
-    public NotaExame getNotaExame() {
-        return notaExame;
-    }
-
-    public void setNotaExame(NotaExame notaExame) {
-        this.notaExame = notaExame;
+    public Notas getNotas() {
+        return notas;
     }
 
     public boolean isAprovado() {
         return aprovado;
-    }
-
-    public void setAprovado(boolean aprovado) {
-        this.aprovado = aprovado;
-    }
-
-    public NotaMedia getMedia() {
-        return media;
-    }
-
-    public void setMedia(NotaMedia media) {
-        this.media = media;
-    }
+    }    
 }

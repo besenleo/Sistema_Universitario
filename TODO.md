@@ -1,2 +1,0 @@
-- Criar funções para ler e escrever em CSV.
-- Ver como funciona o Enum em Java e implementar no codigo.

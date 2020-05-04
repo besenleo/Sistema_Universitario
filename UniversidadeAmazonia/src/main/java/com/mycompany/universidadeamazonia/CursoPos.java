@@ -1,7 +1,7 @@
 package com.mycompany.universidadeamazonia;
 
 public class CursoPos extends Curso{
-    private String nivel = "pos_graduacao";
+    private final String nivel = "pos_graduacao";
     
     public CursoPos(String nome, int anoCurso){
         this.nome = nome;

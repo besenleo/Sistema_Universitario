@@ -1,4 +1,4 @@
-.class
+*.class
 UniversidadeAmazonia/target/*
 DB/*
 DB_exemplo/*

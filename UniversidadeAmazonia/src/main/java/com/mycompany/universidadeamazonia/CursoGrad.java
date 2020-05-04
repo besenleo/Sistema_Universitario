@@ -1,10 +1,10 @@
 package com.mycompany.universidadeamazonia;
 
 public class CursoGrad extends Curso{
-    private final String nivel = "graduacao";
+    private final String nivel = "GRADUACAO";
     
     public CursoGrad(String nome, int anoCurso){
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
         this.setAnoCurso(anoCurso);
     }
 

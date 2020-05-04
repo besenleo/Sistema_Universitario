@@ -15,7 +15,7 @@ public abstract class InitCSV {
     private final Path source = Paths.get(System.getProperty("user.dir"));
     private final Path parentSource = source.getParent();
     
-    public void InitCSVFiles() throws IOException{
+    protected String InitCSVFiles() throws IOException{
         //Path da pasta DB
         String DBPath = parentSource.toString().concat("/DB");
         //Instanciando um objeto file com o path da onde deve ser o DB
@@ -44,6 +44,7 @@ public abstract class InitCSV {
                 System.out.println("Arquivo cursos já existe!");
             }
         }
+        return DBPath;
     }
 
     public Path getSource() {

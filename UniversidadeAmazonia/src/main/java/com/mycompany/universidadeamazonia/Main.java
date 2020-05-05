@@ -26,10 +26,14 @@ public class Main {
 /* TESTES DO ESCREVER E LER DO CSV*/
 
 //        EscreverCSV escrever = new EscreverCSV();
-//        CursoGrad lpoo = new CursoGrad("LPOO", 2019);
+        
+//        Aluno aluno = new Aluno("b12","Luiz");
+//        escrever.adicionarAluno(aluno);
+        
+//        CursoGrad lpoo = new CursoGrad("LPOO", 2018);
 //        escrever.adicionarCurso(lpoo);
 //    
-//        CursoPos apoo = new CursoPos("APOO", 2019);
+//        CursoPos apoo = new CursoPos("APOO", 2018);
 //        escrever.adicionarCurso(apoo);
 
 //        LerCSV listar = new LerCSV();
@@ -44,7 +48,15 @@ public class Main {
 //            System.out.println(curso.getNome() + " " + curso.getNivel() + " " + curso.getAnoCurso());
 //        }
     
-
+//        boolean resultado = listar.verificarCursoJaExiste(lpoo);
+//        if (resultado == true){
+//            System.out.println("Curso ja existe!");
+//        }
+//        
+//        boolean resultado2 = listar.verificarCursoJaExiste(apoo);
+//        if (resultado2 == true){
+//            System.out.println("Curso 2 ja existe!");
+//        }
 
     }
 }

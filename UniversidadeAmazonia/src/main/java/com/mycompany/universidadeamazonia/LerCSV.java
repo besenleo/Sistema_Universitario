@@ -69,4 +69,32 @@ public class LerCSV extends InitCSV{
         }     
     }
     
+    
+    public boolean verificarAlunoJaExiste(Aluno aluno){
+    /* Metodo responsavel por verificar se um Aluno ja existe no alunos.csv.
+    Retorna um true se já existir e false caso não exista*/
+        ArrayList<Aluno> alunos = this.listarTodosAlunos();
+        for (Aluno a : alunos){
+            boolean resultado = aluno.equals(a);
+            if (resultado == true){
+                return true;
+            }
+        }
+    
+        return false;
+    }
+    
+    public boolean verificarCursoJaExiste(Curso curso){
+    /* Metodo responsavel por verificar se um Aluno ja existe no alunos.csv.
+    Retorna um true se já existir e false caso não exista*/
+        ArrayList<Curso> cursos = this.listarTodosCursos();
+        for (Curso c : cursos){
+            boolean resultado = curso.equals(c);
+            if (resultado == true){
+                return true;
+            }
+        }
+    
+        return false;
+    }
 }

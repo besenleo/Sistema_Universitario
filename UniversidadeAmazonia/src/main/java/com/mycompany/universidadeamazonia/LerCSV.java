@@ -8,8 +8,10 @@ import java.util.ArrayList;
 public class LerCSV extends InitCSV{
     
     public ArrayList listarTodosAlunos() {
-    /* Metodo responsavel por listar todos os alunos. Retorna um ArrayList de
-    objetos Aluno*/    
+     /**
+     * Metodo responsavel por listar todos os alunos cadastrados.
+     * @return ArrayList<Aluno>
+     */    
         
         try {
             String linha;
@@ -36,9 +38,12 @@ public class LerCSV extends InitCSV{
         }     
     }
     
+    
     public ArrayList listarTodosCursos() {
-    /* Metodo responsavel por listar todos os cursos. Retorna um ArrayList de
-    objetos Curso*/    
+    /**
+     * Metodo responsável por listar todos os cursos cadastrados.
+     * @return ArrayList<Curso>
+     */
         
         try {
             String linha;
@@ -116,5 +121,42 @@ public class LerCSV extends InitCSV{
             }
         }
         return null;
+    }
+    
+    public ArrayList listarRendimentosDoCurso(String nomeCurso, String nivelCurso, int anoCurso){
+        Curso curso = this.acharCurso(nomeCurso, nivelCurso, anoCurso);
+        if (curso != null){
+            try {
+                String linha;
+                String delimitador = ";";
+                String pathDB = this.InitCSVFiles();
+                ArrayList<Rendimento> rendimentos = new ArrayList<>();
+            
+                BufferedReader br = Files.newBufferedReader(Paths.get(pathDB + curso.nomeDoArquivo()));
+
+                while ((linha = br.readLine()) != null) {
+                    String[] itemDaLinha = linha.split(delimitador);
+                    // Esse if é para caso tenha linhas em branco no CSV
+                    if (!linha.equals("")){
+                        Rendimento r = new Rendimento(itemDaLinha[0], 
+                                nomeCurso, nivelCurso, anoCurso,
+                                Double.parseDouble(itemDaLinha[1]), 
+                                Double.parseDouble(itemDaLinha[2]), 
+                                Double.parseDouble(itemDaLinha[3]), 
+                                Double.parseDouble(itemDaLinha[4]));
+                        rendimentos.add(r);
+                    }
+                }
+                br.close();
+                return rendimentos;
+
+            } catch (Exception ex) {
+                System.err.println("Nao foi possivel listar os rendimentos! " + ex);
+                return null;
+            }
+        }else{
+            System.err.println("Nao foi possivel achar o curso que você deseja. Tente novamente");
+            return null;
+        }
     }
 }

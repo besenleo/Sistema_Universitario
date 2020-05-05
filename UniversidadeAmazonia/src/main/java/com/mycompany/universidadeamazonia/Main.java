@@ -104,6 +104,24 @@ public class Main {
 //            System.out.println("Esse curso nao foi cadastro");
 //        }
 
+//        TESTAR LISTAR TODOS OS RENDIMENTOS DE UM CURSO
+//        ArrayList<Rendimento> rendimentos = listar.listarRendimentosDoCurso("LpOo", "GrAduaCaO", 2020);
+//        if(rendimentos != null){
+//            for(Rendimento r : rendimentos){
+//                System.out.println(r.getAluno().getNome() + "- Media: " + r.getMedia().getValor() + " - Aprovado? " + r.isAprovado());
+//            }
+//        }else{
+//            System.out.println("Nao deu certo!");
+//        }      
+//        ArrayList<Rendimento> rNaoEhParaDarCerto = listar.listarRendimentosDoCurso("AMANA", "GrAduaCaO", 2020);
+//        if(rNaoEhParaDarCerto != null){
+//            for(Rendimento r : rNaoEhParaDarCerto){
+//                System.out.println(r.getAluno().getNome() + "- Media: " + r.getMedia().getValor() + " - Aprovado? " + r.isAprovado());
+//            }
+//        }else{
+//            System.out.println("Nao tem esse curso msm!");
+//        }
+
 
 
 

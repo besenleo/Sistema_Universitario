@@ -24,7 +24,7 @@ public class Notas {
     }
 
     public void setNotaNP1(double notaNP1) {
-        if (notaNP1 < 0 || notaNP1 > 10){
+        if (notaNP1 >= 0 && notaNP1 <= 10){
             this.notaNP1 = notaNP1;
         }else{
             throw new IllegalArgumentException("Valor da nota da NP1 não pertence entre 0 a 10. Você tentou atribuir: " + notaNP1);

@@ -97,4 +97,24 @@ public class LerCSV extends InitCSV{
     
         return false;
     }
+    
+    public Aluno acharAlunoPeloId(String id){
+        ArrayList<Aluno> alunos = this.listarTodosAlunos();
+        for(Aluno a : alunos){
+            if (a.getId().equals(id)){
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    public Curso acharCurso(String nome,String nivel, int ano){
+        ArrayList<Curso> cursos = this.listarTodosCursos();
+        for(Curso c : cursos){
+            if (c.getNome().equals(nome.toUpperCase()) && c.getNivel().equals(nivel.toUpperCase()) && c.getAnoCurso() == ano){
+                return c;
+            }
+        }
+        return null;
+    }
 }

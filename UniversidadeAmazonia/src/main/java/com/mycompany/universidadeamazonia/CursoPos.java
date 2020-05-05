@@ -3,7 +3,7 @@ package com.mycompany.universidadeamazonia;
 public class CursoPos extends Curso implements Comparable<CursoPos>{
     
     public CursoPos(String nome, int anoCurso){
-        this.nivel = nivel = "POS_GRADUACAO";
+        this.nivel = "POS_GRADUACAO";
         this.nome = nome.toUpperCase();
         this.setAnoCurso(anoCurso);
     }

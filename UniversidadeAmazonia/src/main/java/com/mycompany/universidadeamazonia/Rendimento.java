@@ -1,25 +1,42 @@
 package com.mycompany.universidadeamazonia;
 
 public class Rendimento {
-    Aluno aluno;
-    Curso curso;
-    Notas notas;
-    Notas media;
-    boolean aprovado;
+    private Aluno aluno;
+    private Curso curso;
+    private Nota NP1;
+    private Nota NP2;
+    private Nota rep;
+    private Nota exam;
+    private Nota media;
+    private boolean aprovado;
     
-    //o parametro aluno vai ser mudado para um id
     //o parametro curso vai ser mudado para nome, nivel e ano
-    public Rendimento(Aluno aluno, Curso curso, double notaNP1, double notaNP2, double notaRep, double notaExam){
-        //funcao que recebe id e acha os parametros no csv e e retorna um objeto
-        this.aluno = aluno;
-        //funcao que recebe nome, nivel e ano e acha os parametros no csv e retorna um objeto
-        this.curso = curso;
+    public Rendimento(String idAluno, String nomeCurso, String nivelCurso, int anoCurso, double notaNP1, double notaNP2, double notaRep, double notaExam){
+        LerCSV leitura = new LerCSV(); //instanciando a classe de leitura
+        // Buscando o aluno pelo id
+        Aluno aluno = leitura.acharAlunoPeloId(idAluno);
+        if(aluno != null){
+            this.aluno = aluno;
+        }else{
+            throw new IllegalArgumentException("Nenhum aluno encontrado com o id especificado!");
+        }
+         // Buscando o curso pelo nome,nivel e ano
+        Curso curso = leitura.acharCurso(nomeCurso, nivelCurso, anoCurso);
+        if(curso != null){
+            this.curso = curso;
+        }else{
+            throw new IllegalArgumentException("Nenhum curso encontrado com os valores especificado!");
+        }
         
-        Notas rendimento = new Notas(notaNP1, notaNP2, notaRep, notaExam);
-        this.notas = rendimento;
+        this.NP1 = new Nota(notaNP1);
         
-        Notas media = new Notas(calcularMedia(notaNP1, notaNP2, notaRep, notaExam, curso));
-        this.media = media;
+        this.NP2 = new Nota(notaNP2);
+        
+        this.rep = new Nota(notaRep);
+        
+        this.exam = new Nota(notaExam);
+        
+        this.media = new Nota(calcularMedia(notaNP1, notaNP2, notaRep, notaExam, curso));
         
     }
     
@@ -81,20 +98,51 @@ public class Rendimento {
             throw new IllegalArgumentException("Curso não é uma gradução nem uma pós-gradução: " + curso.getClass().getName());
         }
     }
+
+    public String registroParaCSV(){
+        return this.getAluno().getId() + ";" + this.getNP1().getValor() + ";" + this.getNP2().getValor() + ";" + this.getRep().getValor() + ";" + this.getExam().getValor() + "\n";
+    }
     
-    public Notas getMedia() {
-        return media;
+    public Aluno getAluno() {
+        //return aluno.getNome();
+        return aluno;
     }
 
     public Curso getCurso() {
         return curso;
     }
 
-    public Notas getNotas() {
-        return notas;
+    public Nota getNP1() {
+        return NP1;
+    }
+
+    public Nota getNP2() {
+        return NP2;
+    }
+
+    public Nota getRep() {
+        return rep;
+    }
+
+    public Nota getExam() {
+        return exam;
+    }
+
+    public Nota getMedia() {
+        return media;
     }
 
     public boolean isAprovado() {
         return aprovado;
-    }    
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+    
+   
 }

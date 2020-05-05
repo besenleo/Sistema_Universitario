@@ -29,4 +29,8 @@ public abstract class Curso {
     public String getNivel() {
         return nivel;
     }
+    
+    public String nomeDoArquivo(){
+        return "/" + this.getNome() + "_" + this.getNivel() + "_" + this.getAnoCurso() + ".csv";
+    }
 }

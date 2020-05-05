@@ -12,7 +12,7 @@ public class Nota {
     }
 
     public void setValor(double valor) {
-        if (valor < 0 || valor > 10){
+        if (valor >= 0 && valor <= 10){
             this.valor = valor;
         }else{
             throw new IllegalArgumentException("Valor da nota não pertence entre 0 a 10. Você tentou atribuir: " + valor);

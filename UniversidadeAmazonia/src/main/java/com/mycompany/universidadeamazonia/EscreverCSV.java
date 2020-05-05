@@ -42,7 +42,7 @@ public class EscreverCSV extends InitCSV{
                 writer.write(curso.getNome()+ ";" + curso.getNivel() + ";" + curso.getAnoCurso() + "\n");
                 writer.close(); //fecha o arquivo apos escrever
                 //Instanciando um objeto file do curso
-                File cursoCSV = new File(pathDB + "/" + curso.getNome()+"_"+curso.getNivel()+"_"+curso.getAnoCurso()+".csv");
+                File cursoCSV = new File(pathDB + curso.nomeDoArquivo());
                 // Se o csv do curso nao existir ele ira cria-lo
                 if (!cursoCSV.exists()){
                     try{
@@ -59,6 +59,21 @@ public class EscreverCSV extends InitCSV{
         }   
     }
    
-    
+    public void adicionarRendimento(Rendimento rend) {
+    /* Esse metodo é responsavel por adicionar um rendimento de um aluno 
+    no respectivo CSV do cursos */
+        try{
+            //TODO: VERIFICAR SE O RENDIMENTO JA FOI ADICIONADO PARA AQUELE ALUNO
+            //Verifica se o arquivos foram criados e retorna o path da pasta dos arquivos
+            String pathDB = this.InitCSVFiles();
+            
+            //Instancia um FileWriter dentro de um buffer e seta o append do FileWriters igual a true
+            BufferedWriter writer = new BufferedWriter(new FileWriter((pathDB + rend.getCurso().nomeDoArquivo()), true));     
+            writer.write(rend.registroParaCSV());
+            writer.close(); //fecha o arquivo apos escrever
+        }catch (Exception ex){
+            System.err.println("Nao foi possivel adicionar o rendimento! " + ex);
+        }  
+    }
     
 }

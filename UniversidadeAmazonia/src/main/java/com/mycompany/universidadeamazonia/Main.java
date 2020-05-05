@@ -1,5 +1,6 @@
 package com.mycompany.universidadeamazonia;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -22,11 +23,28 @@ public class Main {
 //
 //        sc.close();
 
-//    CursoGrad lpoo = new CursoGrad("LPOO", 2020);
-//    EscreverCSV escrever = new EscreverCSV();
-//    escrever.adicionarCurso(lpoo);
+/* TESTES DO ESCREVER E LER DO CSV*/
+
+//        EscreverCSV escrever = new EscreverCSV();
+//        CursoGrad lpoo = new CursoGrad("LPOO", 2019);
+//        escrever.adicionarCurso(lpoo);
 //    
-//    CursoPos apoo = new CursoPos("APOO", 2020);
-//    escrever.adicionarCurso(apoo);
+//        CursoPos apoo = new CursoPos("APOO", 2019);
+//        escrever.adicionarCurso(apoo);
+
+//        LerCSV listar = new LerCSV();
+    
+//        ArrayList<Aluno> alunos = listar.listarTodosAlunos();
+//        for (Aluno aluno : alunos) {
+//            System.out.println(aluno.getId() + " " + aluno.getNome());
+//        }
+
+//        ArrayList<Curso> cursos = listar.listarTodosCursos();
+//        for (Curso curso : cursos) {
+//            System.out.println(curso.getNome() + " " + curso.getNivel() + " " + curso.getAnoCurso());
+//        }
+    
+
+
     }
 }

@@ -8,6 +8,7 @@ import java.nio.file.FileAlreadyExistsException;
 public class EscreverCSV extends InitCSV{
     
     public void adicionarAluno(Aluno aluno) {
+    // Esse metodo é responsavel por adicionar um novo aluno no alunos.csv
         try{
             //TODO: VERIFICAR SE O ALUNO JA NAO EXISTE ANTES DE ADICIONAR (CRIAR FUNCAO QUE LE TUDO E FAZER UM FOR PARA VER SE JA EXISTE)
             //Verifica se o arquivos foram criados e retorna o path da pasta dos arquivos
@@ -22,6 +23,8 @@ public class EscreverCSV extends InitCSV{
     } 
     
     public void adicionarCurso(CursoGrad curso) {
+    /* Esse metodo é responsavel por adicionar um novo curso de Gradução no 
+    cursos.csv e criar seu respectivo csv para armazenar os rendimentos */
         try{
             //TODO: VERIFICAR SE O CURSO JA NAO EXISTE ANTES DE ADICIONAR (CRIAR FUNCAO QUE LE TUDO E FAZER UM FOR PARA VER SE JA EXISTE)
             //Verifica se o arquivos foram criados e retorna o path da pasta dos arquivos
@@ -46,6 +49,8 @@ public class EscreverCSV extends InitCSV{
     }
     
     public void adicionarCurso(CursoPos curso) {
+    /* Esse metodo é responsavel por adicionar um novo curso de Pos-Graduação no 
+    cursos.csv e criar seu respectivo csv para armazenar os rendimentos */
         try{
             //TODO: VERIFICAR SE O CURSO JA NAO EXISTE ANTES DE ADICIONAR (CRIAR FUNCAO QUE LE TUDO E FAZER UM FOR PARA VER SE JA EXISTE)
             //Verifica se o arquivos foram criados e retorna o path da pasta dos arquivos

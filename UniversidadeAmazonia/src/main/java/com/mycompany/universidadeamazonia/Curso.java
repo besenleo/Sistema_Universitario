@@ -3,6 +3,7 @@ package com.mycompany.universidadeamazonia;
 public abstract class Curso {
     protected String nome;
     protected int anoCurso;
+    protected String nivel;
     
     public String getNome() {
         return nome;
@@ -23,5 +24,9 @@ public abstract class Curso {
         }else{
             throw new IllegalArgumentException("A quantidade de carecteres para o ano deve ser igual a 4. Ex: 2019");
         }
+    }
+    
+    public String getNivel() {
+        return nivel;
     }
 }

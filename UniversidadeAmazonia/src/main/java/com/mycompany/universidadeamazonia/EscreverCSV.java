@@ -14,7 +14,7 @@ public class EscreverCSV extends InitCSV{
             String pathDB = this.InitCSVFiles();
             //Instancia um FileWriter dentro de um buffer e seta o append do FileWriters igual a true
             BufferedWriter writer = new BufferedWriter(new FileWriter((pathDB + "/alunos.csv"), true));     
-            writer.write(aluno.getId()+ ";" + aluno.getNome() + "\n"); //
+            writer.write(aluno.getId()+ ";" + aluno.getNome() + "\n");
             writer.close(); //fecha o arquivo apos escrever
         }catch (Exception ex){
             System.err.println("Nao foi possivel adicionar o aluno! " + ex);
@@ -27,7 +27,7 @@ public class EscreverCSV extends InitCSV{
             //Verifica se o arquivos foram criados e retorna o path da pasta dos arquivos
             String pathDB = this.InitCSVFiles();
             //Instancia um FileWriter dentro de um buffer e seta o append do FileWriters igual a true
-            BufferedWriter writer = new BufferedWriter(new FileWriter((pathDB + "/alunos.csv"), true));     
+            BufferedWriter writer = new BufferedWriter(new FileWriter((pathDB + "/cursos.csv"), true));     
             writer.write(curso.getNome()+ ";" + curso.getNivel() + ";" + curso.getAnoCurso() + "\n");
             writer.close(); //fecha o arquivo apos escrever
             //Instanciando um objeto file do curso
@@ -51,7 +51,7 @@ public class EscreverCSV extends InitCSV{
             //Verifica se o arquivos foram criados e retorna o path da pasta dos arquivos
             String pathDB = this.InitCSVFiles();
             //Instancia um FileWriter dentro de um buffer e seta o append do FileWriters igual a true
-            BufferedWriter writer = new BufferedWriter(new FileWriter((pathDB + "/alunos.csv"), true));     
+            BufferedWriter writer = new BufferedWriter(new FileWriter((pathDB + "/cursos.csv"), true));     
             writer.write(curso.getNome()+ ";" + curso.getNivel() + ";" + curso.getAnoCurso() + "\n");
             writer.close(); //fecha o arquivo apos escrever
             //Instanciando um objeto file do curso

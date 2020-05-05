@@ -22,9 +22,11 @@ public class Main {
 //
 //        sc.close();
 
-    Aluno aluno = new Aluno("b12", "Luiz");
-    EscreverCSV escrever = new EscreverCSV();
-    escrever.adicionarAluno(aluno);
-        
+//    CursoGrad lpoo = new CursoGrad("LPOO", 2020);
+//    EscreverCSV escrever = new EscreverCSV();
+//    escrever.adicionarCurso(lpoo);
+//    
+//    CursoPos apoo = new CursoPos("APOO", 2020);
+//    escrever.adicionarCurso(apoo);
     }
 }

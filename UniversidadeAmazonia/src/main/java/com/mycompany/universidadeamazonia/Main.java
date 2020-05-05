@@ -122,9 +122,15 @@ public class Main {
 //            System.out.println("Nao tem esse curso msm!");
 //        }
 
-
-
-
+//        TESTE LISTAR HISTORICO DO ALUNO
+//        ArrayList<Rendimento> rendimentos = listar.listarHistoricoAluno("b15");
+//        if(rendimentos != null){
+//            for(Rendimento r : rendimentos){
+//                System.out.println(r.getCurso().nome + " " + r.getCurso().getNivel() + "- Media: " + r.getMedia().getValor() + " - Aprovado? " + r.isAprovado());
+//            }
+//        }else{
+//            System.out.println("Nao deu certo!");
+//        }      
 
     }
 }

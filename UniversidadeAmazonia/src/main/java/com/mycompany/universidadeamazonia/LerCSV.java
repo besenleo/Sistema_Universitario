@@ -159,4 +159,43 @@ public class LerCSV extends InitCSV{
             return null;
         }
     }
+    
+    public ArrayList listarHistoricoAluno(String idAluno){
+        Aluno aluno = this.acharAlunoPeloId(idAluno);
+        ArrayList<Rendimento> rendimentos = new ArrayList<>();
+        if (aluno != null){
+            ArrayList<Curso> cursos = this.listarTodosCursos();
+            for (Curso curso : cursos){
+                try {
+                    String linha;
+                    String delimitador = ";";
+                    String pathDB = this.InitCSVFiles();
+                    
+                    BufferedReader br = Files.newBufferedReader(Paths.get(pathDB + curso.nomeDoArquivo()));
+
+                    while ((linha = br.readLine()) != null) {
+                        String[] itemDaLinha = linha.split(delimitador);
+                        // Esse if é para caso tenha linhas em branco no CSV
+                        if (!linha.equals("") && itemDaLinha[0].equals(idAluno)){
+                            Rendimento r = new Rendimento(itemDaLinha[0], 
+                                    curso.getNome(), curso.getNivel(), curso.getAnoCurso(),
+                                    Double.parseDouble(itemDaLinha[1]), 
+                                    Double.parseDouble(itemDaLinha[2]), 
+                                    Double.parseDouble(itemDaLinha[3]), 
+                                    Double.parseDouble(itemDaLinha[4]));
+                            rendimentos.add(r);
+                        }
+                    }
+                    br.close();
+                } catch (Exception ex) {
+                    System.err.println("Nao foi possivel listar os rendimentos! " + ex);
+                    return null;
+                }
+            }
+        }else{
+            System.err.println("Nao foi achar o aluno atraves do ID especificado. Tente novamente! ");
+            return null;
+        }
+        return rendimentos;
+    }
 }

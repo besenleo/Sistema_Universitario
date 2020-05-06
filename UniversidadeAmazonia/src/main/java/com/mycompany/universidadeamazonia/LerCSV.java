@@ -103,6 +103,19 @@ public class LerCSV extends InitCSV{
         return false;
     }
     
+    public boolean verificarRendimentoJaExiste(String nomeCurso, String nivelCurso, int anoCurso, String idAluno){
+    /* Metodo responsavel por verificar se um Rendimento ja existe no csv do curso especificado.
+    Retorna um true se já existir e false caso não exista*/
+        ArrayList<Rendimento> rend = this.listarRendimentosDoCurso(nomeCurso, nivelCurso, anoCurso);
+        for (Rendimento r : rend){
+            if (r.getAluno().getId().equals(idAluno)){
+                return true;
+            }
+        }
+    
+        return false;
+    }
+    
     public Aluno acharAlunoPeloId(String id){
         ArrayList<Aluno> alunos = this.listarTodosAlunos();
         for(Aluno a : alunos){
@@ -138,8 +151,8 @@ public class LerCSV extends InitCSV{
                     String[] itemDaLinha = linha.split(delimitador);
                     // Esse if é para caso tenha linhas em branco no CSV
                     if (!linha.equals("")){
-                        Rendimento r = new Rendimento(itemDaLinha[0], 
-                                nomeCurso, nivelCurso, anoCurso,
+                        Aluno aluno = this.acharAlunoPeloId(itemDaLinha[0]);
+                        Rendimento r = new Rendimento(aluno, curso,
                                 Double.parseDouble(itemDaLinha[1]), 
                                 Double.parseDouble(itemDaLinha[2]), 
                                 Double.parseDouble(itemDaLinha[3]), 
@@ -177,8 +190,7 @@ public class LerCSV extends InitCSV{
                         String[] itemDaLinha = linha.split(delimitador);
                         // Esse if é para caso tenha linhas em branco no CSV
                         if (!linha.equals("") && itemDaLinha[0].equals(idAluno)){
-                            Rendimento r = new Rendimento(itemDaLinha[0], 
-                                    curso.getNome(), curso.getNivel(), curso.getAnoCurso(),
+                            Rendimento r = new Rendimento(aluno, curso,
                                     Double.parseDouble(itemDaLinha[1]), 
                                     Double.parseDouble(itemDaLinha[2]), 
                                     Double.parseDouble(itemDaLinha[3]), 

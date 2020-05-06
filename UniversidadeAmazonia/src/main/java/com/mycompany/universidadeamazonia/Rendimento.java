@@ -11,21 +11,21 @@ public class Rendimento {
     private boolean aprovado;
     
     //o parametro curso vai ser mudado para nome, nivel e ano
-    public Rendimento(String idAluno, String nomeCurso, String nivelCurso, int anoCurso, double notaNP1, double notaNP2, double notaRep, double notaExam){
+    public Rendimento(Aluno aluno, Curso curso, double notaNP1, double notaNP2, double notaRep, double notaExam){
         LerCSV leitura = new LerCSV(); //instanciando a classe de leitura
-        // Buscando o aluno pelo id
-        Aluno aluno = leitura.acharAlunoPeloId(idAluno);
-        if(aluno != null){
+        // Verificar se o curso existe
+        boolean alunoExiste = leitura.verificarAlunoJaExiste(aluno);
+        if(alunoExiste == true){
             this.aluno = aluno;
         }else{
-            throw new IllegalArgumentException("Nenhum aluno encontrado com o id especificado!");
+            throw new IllegalArgumentException("Nenhum aluno encontrado quando tentamos criar o rendimento!");
         }
-         // Buscando o curso pelo nome,nivel e ano
-        Curso curso = leitura.acharCurso(nomeCurso, nivelCurso, anoCurso);
-        if(curso != null){
+         // Verificar se o curso existe
+        boolean cursoExiste = leitura.verificarCursoJaExiste(curso);
+        if(cursoExiste == true){
             this.curso = curso;
         }else{
-            throw new IllegalArgumentException("Nenhum curso encontrado com os valores especificado!");
+            throw new IllegalArgumentException("Nenhum curso encontrado quando tentamos criar o rendimento!");
         }
         
         this.NP1 = new Nota(notaNP1);

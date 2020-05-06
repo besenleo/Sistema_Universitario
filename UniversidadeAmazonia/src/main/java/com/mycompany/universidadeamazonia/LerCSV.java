@@ -80,8 +80,8 @@ public class LerCSV extends InitCSV{
     Retorna um true se já existir e false caso não exista*/
         ArrayList<Aluno> alunos = this.listarTodosAlunos();
         for (Aluno a : alunos){
-            boolean resultado = aluno.equals(a);
-            if (resultado == true){
+            int resultado = aluno.compareTo(a);
+            if (resultado == 0){
                 return true;
             }
         }
@@ -94,7 +94,7 @@ public class LerCSV extends InitCSV{
     Retorna um true se já existir e false caso não exista*/
         ArrayList<Curso> cursos = this.listarTodosCursos();
         for (Curso c : cursos){
-            boolean resultado = curso.equals(c);
+            boolean resultado = curso.equals(c); //TODO: DUVIDA PARA PROFESSOR
             if (resultado == true){
                 return true;
             }

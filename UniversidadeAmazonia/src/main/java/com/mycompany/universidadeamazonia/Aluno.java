@@ -29,9 +29,9 @@ public class Aluno implements Comparable<Aluno>{
     @Override
     public int compareTo(Aluno outro) {
         
-        if(!getNome().equals(outro.getNome())) {
-            return getNome().compareTo(outro.getNome());
-	}
+//        if(!getNome().equals(outro.getNome())) {
+//            return getNome().compareTo(outro.getNome());
+//	}
         
         if(!getId().equals(outro.getId())) {
             return getId().compareTo(outro.getId());

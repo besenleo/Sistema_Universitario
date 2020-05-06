@@ -8,6 +8,8 @@ import java.nio.file.FileAlreadyExistsException;
 public class EscreverCSV extends InitCSV{
     private LerCSV leitura = new LerCSV(); // Instancia a classe de leitura
     
+    //Criar um constructor que so tem o initCSVFiles dentro;
+    
     public void adicionarAluno(Aluno aluno) {
     // Esse metodo é responsavel por adicionar um novo aluno no alunos.csv
         try{

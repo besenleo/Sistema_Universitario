@@ -31,7 +31,7 @@ public abstract class InitCSV {
             try{
                 alunosCSV.createNewFile();
             }catch(FileAlreadyExistsException ex){
-                System.out.println("Arquivo alunos já existe!");
+                System.out.println("Arquivo alunos.csv já existe!");
             }
         }
         //Instanciando um objeto file do cursos.csv

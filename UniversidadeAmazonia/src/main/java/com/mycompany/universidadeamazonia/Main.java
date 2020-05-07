@@ -167,19 +167,27 @@ public class Main {
                 
             case 4:
                 ArrayList<Aluno> alunos = ler.listarTodosAlunos();
-                for (Aluno a : alunos){
-                    System.out.println("Id: " +  a.getId());
-                    System.out.println("Nome: " +  a.getNome()+ "\n");
+                if (alunos != null && !alunos.isEmpty()){
+                    for (Aluno a : alunos){
+                        System.out.println("Id: " +  a.getId());
+                        System.out.println("Nome: " +  a.getNome()+ "\n");
+                    }
+                }else{
+                    System.out.println("\nNao existe nenhum aluno cadastrado!\n");
                 }
                 break;
                 
             case 5:
                 ArrayList<Curso> cursos = ler.listarTodosCursos();
-                for (Curso c : cursos){
-                    System.out.println("Nome: " +  c.getNome());
-                    System.out.println("Nivel: " +  c.getNivel());
-                    System.out.println("Ano: " +  c.getAnoCurso() + "\n");
-                }
+                if (cursos != null && !cursos.isEmpty()){
+                    for (Curso c : cursos){
+                        System.out.println("Nome: " +  c.getNome());
+                        System.out.println("Nivel: " +  c.getNivel());
+                        System.out.println("Ano: " +  c.getAnoCurso() + "\n");
+                    }
+                }else{
+                    System.out.println("\nNao existe nenhum curso cadastrado!\n");
+                }    
                 break;
                 
             case 6:
@@ -188,6 +196,7 @@ public class Main {
                 String idAlunoHist = dadosIdAlunoHist.replaceAll("\\s+", "");
                 Aluno alunoHist = validarInput.validaIdAluno(idAlunoHist, sc);
                 ArrayList<Rendimento> rendimentosAluno = ler.listarHistoricoAluno(alunoHist.getId());
+                if (rendimentosAluno != null && !rendimentosAluno.isEmpty()){
                 System.out.println("\n Para o aluno " + alunoHist.getNome() + " os rendimentos foram:\n");
                 for(Rendimento r : rendimentosAluno){
                     System.out.println("Curso " + r.getCurso().getNome() + " da " + r.getCurso().getNivel() + " de " + r.getCurso().getAnoCurso());
@@ -201,6 +210,9 @@ public class Main {
                     }else{
                         System.out.println("O aluno foi REPROVADO nesse curso. \n");
                     }
+                }
+                }else{
+                    System.out.println("\nNao existe nenhum rendimento para esse aluno!\n");
                 }
                 break;
                 
@@ -230,19 +242,23 @@ public class Main {
                 //Valida se o curso existe baseado no input do usuario Instancia objeto curso
                 Curso cursoHist = validarInput.validaCurso(cursoNomeHist, cursoTipoHist, cursoAnoHist, sc);
                 ArrayList<Rendimento> rendimentosHist = ler.listarRendimentosDoCurso(cursoHist.getNome(), cursoHist.getNivel(), cursoHist.getAnoCurso());
-                System.out.println("\nPara o curso " + cursoHist.getNome() + " da " + cursoHist.getNivel() + " de " + cursoHist.getAnoCurso() + " os rendimentos foram:\n" );
-                for(Rendimento r : rendimentosHist){
-                    System.out.println("Para o aluno " + r.getAluno().getNome() + " os rendimento foi:");
-                    System.out.println("NP1: " + r.getNP1().getValor());
-                    System.out.println("NP2: " + r.getNP2().getValor());
-                    System.out.println("Reposição: " + r.getRep().getValor());
-                    System.out.println("Exame: " + r.getExam().getValor());
-                    System.out.println("MÉDIA: " + r.getMedia().getValor());
-                    if (r.isAprovado() == true){
-                        System.out.println("O aluno foi APROVADO nesse curso. \n");
-                    }else{
-                        System.out.println("O aluno foi REPROVADO nesse curso. \n");
-                    }
+                if (rendimentosHist != null && !rendimentosHist.isEmpty()){
+                    System.out.println("\nPara o curso " + cursoHist.getNome() + " da " + cursoHist.getNivel() + " de " + cursoHist.getAnoCurso() + " os rendimentos foram:\n" );
+                    for(Rendimento r : rendimentosHist){
+                        System.out.println("Para o aluno " + r.getAluno().getNome() + " os rendimento foi:");
+                        System.out.println("NP1: " + r.getNP1().getValor());
+                        System.out.println("NP2: " + r.getNP2().getValor());
+                        System.out.println("Reposição: " + r.getRep().getValor());
+                        System.out.println("Exame: " + r.getExam().getValor());
+                        System.out.println("MÉDIA: " + r.getMedia().getValor());
+                        if (r.isAprovado() == true){
+                            System.out.println("O aluno foi APROVADO nesse curso. \n");
+                        }else{
+                            System.out.println("O aluno foi REPROVADO nesse curso. \n");
+                        }
+                }
+                }else{
+                    System.out.println("\nNao existe nenhum rendimento para esse curso!\n");
                 }
                 break;
                 

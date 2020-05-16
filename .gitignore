@@ -1,5 +1,3 @@
 *.class
-UniversidadeAmazonia/target/*
 DB/*
 DB_exemplo/*
-UniversidadeAmazonia/target/classes/com/mycompany/universidadeamazonia/*

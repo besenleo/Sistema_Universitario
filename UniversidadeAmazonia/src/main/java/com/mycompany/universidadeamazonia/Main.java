@@ -45,7 +45,7 @@ public class Main {
                 boolean alunoJaExiste = ler.verificarAlunoJaExiste(aluno);
                 if (alunoJaExiste == false){
                     escrever.adicionarAluno(aluno);
-                    System.out.println("\n Adiação concluida! \n");
+                    System.out.println("\n Adição concluida! \n");
                 }else{
                     System.out.println("\n Aluno já esta registrado no sistema! \n");
                 }
@@ -76,7 +76,7 @@ public class Main {
                     boolean graducaoJaExiste = ler.verificarCursoJaExiste(graducao);
                     if(graducaoJaExiste == false){
                         escrever.adicionarCurso(graducao);
-                        System.out.println("\n Adiação concluida! \n");
+                        System.out.println("\n Adição concluida! \n");
                     }else{
                         System.out.println("\n Curso já esta registrado no sistema! \n");
                     } 
@@ -85,7 +85,7 @@ public class Main {
                     boolean posJaExiste = ler.verificarCursoJaExiste(pos);
                     if(posJaExiste == false){
                         escrever.adicionarCurso(pos);
-                        System.out.println("\n Adiação concluida! \n");
+                        System.out.println("\n Adição concluida! \n");
                     }else{
                         System.out.println("\n Curso já esta registrado no sistema! \n");
                     } 
@@ -100,17 +100,17 @@ public class Main {
                 Aluno alunoRend = validarInput.validaIdAluno(idRendimento, sc);
                 if (alunoRend != null){
                     // Pega o input do nome do Curso feito pelo usuario
-                    System.out.println("Digite o NOME do CURSO que o RENDIMENTO do aluno pertence: ");
+                    System.out.println("Digite o NOME do CURSO que o RENDIMENTO pertence: ");
                     String dadoNomeCursoRend = sc.nextLine();
                     String cursoRendLowerCase = dadoNomeCursoRend.replaceAll("\\s+", "");
                     String cursoNomeRend = cursoRendLowerCase.toUpperCase();
                     // Pega o input do ano do Curso feito pelo usuario
-                    System.out.println("Digite o ANO do CURSO que o RENDIMENTO do aluno pertence:");
+                    System.out.println("Digite o ANO do CURSO que o RENDIMENTO pertence:");
                     String dadoAnoRend = sc.nextLine();
                     String cursoAnoRendInput = dadoAnoRend.replaceAll("\\s+", "");
                     int cursoAnoRend = validarInput.validaAno(cursoAnoRendInput, sc);
                     // Pega o input do tipo do Curso feito pelo usuario
-                    System.out.println("Selecione o TIPO do CURSO que você deseja adicionar: ");
+                    System.out.println("Selecione o TIPO do CURSO que o RENDIMENTO pertence: ");
                     System.out.println("1 - GRADUÇÃO");
                     System.out.println("2 - PÓS-GRADUÇÃO");
                     String dadoTipoRend = sc.nextLine();
@@ -151,7 +151,7 @@ public class Main {
                             //Instanciar o Rendimento 
                             Rendimento rendimento = new Rendimento(alunoRend, cursoRend, NP1, NP2, Rep, Exam);
                             escrever.adicionarRendimento(rendimento);
-                            System.out.println("\n Adiação concluida! \n");
+                            System.out.println("\n Adição concluida! \n");
                         }else{
                             System.out.println("\n Esse rendimento já foi adicionado para esse aluno nesse curso \n");
                         }   
@@ -191,7 +191,7 @@ public class Main {
                 break;
                 
             case 6:
-                System.out.println("Digite o ID do ALUNO que você deseja adicionar: ");
+                System.out.println("Digite o ID do ALUNO que você deseja procurar: ");
                 String dadosIdAlunoHist = sc.nextLine();
                 String idAlunoHist = dadosIdAlunoHist.replaceAll("\\s+", "");
                 Aluno alunoHist = validarInput.validaIdAluno(idAlunoHist, sc);
@@ -217,17 +217,17 @@ public class Main {
                 break;
                 
             case 7:
-                System.out.println("Digite o NOME do CURSO que o RENDIMENTO do aluno pertence: ");
+                System.out.println("Digite o NOME do CURSO: ");
                 String dadoNomeCursoHist = sc.nextLine();
                 String cursoHistLowerCase = dadoNomeCursoHist.replaceAll("\\s+", "");
                 String cursoNomeHist = cursoHistLowerCase.toUpperCase();
                 // Pega o input do ano do Curso feito pelo usuario
-                System.out.println("Digite o ANO do CURSO que o RENDIMENTO do aluno pertence:");
+                System.out.println("Digite o ANO do CURSO:");
                 String dadoAnoHist = sc.nextLine();
                 String cursoAnoHistInput = dadoAnoHist.replaceAll("\\s+", "");
                 int cursoAnoHist = validarInput.validaAno(cursoAnoHistInput, sc);
                 // Pega o input do tipo do Curso feito pelo usuario
-                System.out.println("Selecione o TIPO do CURSO que você deseja adicionar: ");
+                System.out.println("Selecione o TIPO do CURSO: ");
                 System.out.println("1 - GRADUÇÃO");
                 System.out.println("2 - PÓS-GRADUÇÃO");
                 String dadoTipoHist = sc.nextLine();
